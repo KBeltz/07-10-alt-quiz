@@ -1,3 +1,19 @@
-form {
+#q1 {
+  visibility: visible;
+}
 
+#q2 {
+  visibility: hidden;
+}
+
+#q3 {
+  visibility: hidden;
+}
+
+#q4 {
+  visibility: hidden;
+}
+
+#q5 {
+  visibility: hidden;
 }
