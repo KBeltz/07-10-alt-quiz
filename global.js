@@ -23,9 +23,7 @@ var is_correct_answer = function(input) {
     return false;
   }
 }
-//-------------------------------------------------------------------------//
-//working ^^
-//-------------------------------------------------------------------------//
+
 //updates score if the user input the correct answer
 //returns a message based on whether they were correct or incorrect
 var update_question_result = function(correct) {
@@ -46,6 +44,10 @@ var process_answer_submission = function() {
   document.getElementById("submitter").style.visibility = "hidden";
 }
 
+//-------------------------------------------------------------------------//
+//working ^^
+//-------------------------------------------------------------------------//
+
 //updates number of currentQuestion
 //removes the current question and selections from view and replaces
 //it with the question and selections for the next question
@@ -57,10 +59,13 @@ function next_question() {
     document.getElementById("submitter").onclick = process_answer_submission;
     document.getElementById("next").onclick = next_question;
     document.getElementById("submitter").style.visibility ="visible";
+    document.getElementById(questions[currentQuestion].id).style.display = "block";
+    document.getElementById(questions[currentQuestion - 1].id).style.display = "none";
   }
   else {
     var percent = (numCorrect/quizLength) * 100;
     document.getElementById("total_result").innerText = ("You answered " + numCorrect + " of " + quizLength + " questions correctly, for a score of " + percent + "%!");
     document.getElementById("next").style.visibility = "hidden";
   }
+  return document.getElementById("question_result").innerText = "";
 }

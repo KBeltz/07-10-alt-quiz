@@ -1,19 +1,52 @@
+body {
+  background-color: teal;
+  color: #FFF;
+  font-family: sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
 #q1 {
-  visibility: visible;
+  display: block;
+  text-align: center;
+  position: relative;
+  top: 0;
 }
 
 #q2 {
-  visibility: hidden;
+  display: none;
+  text-align: center;
+  position: relative;
+  top: 0;
 }
 
 #q3 {
-  visibility: hidden;
+  display: none;
+  text-align: center;
+  position: relative;
+  top: 0;
 }
 
 #q4 {
-  visibility: hidden;
+  display: none;
+  text-align: center;
+  position: relative;
+  top: 0;
 }
 
 #q5 {
-  visibility: hidden;
+  display: none;
+  text-align: center;
+  position: relative;
+  top: 0;
+}
+
+#user_input, #question_result, #total_result {
+  text-align: center;
+}
+
+#next {
+  float: right;
 }
