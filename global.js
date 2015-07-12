@@ -5,14 +5,18 @@ var numCorrect = 0;
 var currentQuestion = 0;
 var quizLength = answers.length - 1;
 
-document.getElementById("submitter").onclick = process_answer_submission;
-document.getElementById("next").onclick = next_question;
-document.getElementById("submitter").style.visibility = "hidden";
-document.getElementById("user_input").style.visibility = "hidden";
+function _(el) {
+  return document.getElementById(el);
+}
+
+_("submitter").onclick = process_answer_submission;
+_("next").onclick = next_question;
+_("submitter").style.visibility = "hidden";
+_("user_input").style.visibility = "hidden";
 
 //returns the number currently entered into the #answer field
 var given_answer = function() {
-  return document.getElementById("choice").value;
+  return _("choice").value;
 }
 
 //checks if the given argument matches the correct answer
@@ -30,10 +34,10 @@ var is_correct_answer = function(input) {
 var update_question_result = function(correct) {
   if (correct) {
     numCorrect++;
-    return document.getElementById("question_result").innerText = "Success!";
+    return _("question_result").innerText = "Success!";
   }
   else {
-    return document.getElementById("question_result").innerText = "Wrong!";
+    return _("question_result").innerText = "Wrong!";
   }
 }
 
@@ -42,7 +46,7 @@ var update_question_result = function(correct) {
 var process_answer_submission = function() {
   var user_answer = given_answer();
   update_question_result(is_correct_answer(user_answer));
-  document.getElementById("submitter").style.visibility = "hidden";
+  _("submitter").style.visibility = "hidden";
 }
 
 //-------------------------------------------------------------------------//
@@ -57,18 +61,18 @@ var process_answer_submission = function() {
 function next_question() {
   currentQuestion++;
   if (currentQuestion < quizLength + 1) {
-    document.getElementById("submitter").onclick = process_answer_submission;
-    document.getElementById("next").onclick = next_question;
-    document.getElementById("submitter").style.visibility ="visible";
-    document.getElementById("user_input").style.visibility = "visible";
-    document.getElementById(questions[currentQuestion].id).style.display = "block";
-    document.getElementById(questions[currentQuestion - 1].id).style.display = "none";
-    document.getElementById("choice").value = "";
+    _("submitter").onclick = process_answer_submission;
+    _("next").onclick = next_question;
+    _("submitter").style.visibility ="visible";
+    _("user_input").style.visibility = "visible";
+    _(questions[currentQuestion].id).style.display = "block";
+    _(questions[currentQuestion - 1].id).style.display = "none";
+    _("choice").value = "";
   }
   else {
     var percent = (numCorrect/quizLength) * 100;
-    document.getElementById("total_result").innerText = ("You answered " + numCorrect + " of " + quizLength + " questions correctly, for a score of " + percent + "%!");
-    document.getElementById("next").style.visibility = "hidden";
+    _("total_result").innerText = ("You answered " + numCorrect + " of " + quizLength + " questions correctly, for a score of " + percent + "%!");
+    _("next").style.visibility = "hidden";
   }
-  return document.getElementById("question_result").innerText = "";
+  return _("question_result").innerText = "";
 }
