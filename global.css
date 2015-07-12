@@ -2,14 +2,22 @@ body {
   background-color: teal;
   color: #FFF;
   font-family: sans-serif;
+  font-size: 20px;
 }
 
 h1 {
   text-align: center;
 }
 
-#q1 {
+#q0 {
   display: block;
+  text-align: center;
+  position: relative;
+  top: 0;
+}
+
+#q1 {
+  display: none;
   text-align: center;
   position: relative;
   top: 0;

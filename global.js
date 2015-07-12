@@ -1,13 +1,14 @@
 //setup
-var answers = [4, 1, 4, 2, 3];
-var questions = [q1, q2, q3, q4, q5];
+var answers = ["", 4, 1, 4, 2, 3];
+var questions = [q0, q1, q2, q3, q4, q5];
 var numCorrect = 0;
 var currentQuestion = 0;
-var quizLength = answers.length;
+var quizLength = answers.length - 1;
 
 document.getElementById("submitter").onclick = process_answer_submission;
 document.getElementById("next").onclick = next_question;
-document.getElementById("submitter").style.visibility = "visible";
+document.getElementById("submitter").style.visibility = "hidden";
+document.getElementById("user_input").style.visibility = "hidden";
 
 //returns the number currently entered into the #answer field
 var given_answer = function() {
@@ -16,7 +17,7 @@ var given_answer = function() {
 
 //checks if the given argument matches the correct answer
 var is_correct_answer = function(input) {
-  if (input === answers[currentQuestion]) {
+  if (input == answers[currentQuestion]) {
     return true;
   }
   else {
@@ -55,12 +56,14 @@ var process_answer_submission = function() {
 //calculates the quiz score and hides next button once the quiz is complete
 function next_question() {
   currentQuestion++;
-  if (currentQuestion < quizLength) {
+  if (currentQuestion < quizLength + 1) {
     document.getElementById("submitter").onclick = process_answer_submission;
     document.getElementById("next").onclick = next_question;
     document.getElementById("submitter").style.visibility ="visible";
+    document.getElementById("user_input").style.visibility = "visible";
     document.getElementById(questions[currentQuestion].id).style.display = "block";
     document.getElementById(questions[currentQuestion - 1].id).style.display = "none";
+    document.getElementById("choice").value = "";
   }
   else {
     var percent = (numCorrect/quizLength) * 100;
